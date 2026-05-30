@@ -41,7 +41,7 @@ func handleObject(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	w.WriteHeader(http.Status.MethodNotAllowed)
+	w.WriteHeader(http.StatusMethodNotAllowed)
 }
 
 func main() {
