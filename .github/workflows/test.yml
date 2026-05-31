@@ -1,0 +1,24 @@
+name: Go Automated Tests
+
+# Запуск тестов при любом push в ветку main (или master, проверь как называется твоя)
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest # Запускаем чистый Linux в облаке GitHub
+
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v4 # Скачиваем твой код на виртуальную машину
+
+    - name: Set up Go environment
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.21' # Устанавливаем Go нужной версии
+
+    - name: Run Go test command
+      run: go test -v ./... # Запускаем наши автотесты
